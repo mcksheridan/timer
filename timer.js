@@ -1,5 +1,11 @@
-const startingTime = 60;
-const timerSpeed = 100;
+class Timer {
+  constructor() {
+    this.startingTime = 60;
+    this.timerSpeed = 100;
+  }
+}
+
+const timerObj = new Timer();
 
 const timer = document.querySelector('.timer');
 const timerMessage = document.querySelector('.timer_message');
@@ -10,7 +16,7 @@ function setTimer(totalTime) {
   timerRemainingTime.innerHTML = totalTime;
 }
 
-setTimer(startingTime);
+setTimer(timerObj.startingTime);
 
 function decrementTimeRemaining() {
   const currentTimeRemaining = timerRemainingTime.innerHTML;
@@ -27,7 +33,7 @@ function decrementProgressBar() {
   const progressBarWidth = timerProgressBar.getAttribute('width');
   const progressBarPercentage = parseFloat(progressBarWidth);
   const progressBarStartingWidth = 100;
-  const decreasePerSecond = progressBarStartingWidth / startingTime;
+  const decreasePerSecond = progressBarStartingWidth / timerObj.startingTime;
   const timerMessageClass = timerMessage.getAttribute('class');
   if (timerMessageClass.includes('timer_message--paused')) {
     return;
@@ -45,7 +51,7 @@ function decrementTimer() {
 }
 
 function startTimer() {
-  setInterval(decrementTimer, timerSpeed);
+  setInterval(decrementTimer, timerObj.timerSpeed);
 }
 
 function beginTimer() {
