@@ -1,0 +1,35 @@
+{
+  "name": "timer",
+  "version": "1.0.0",
+  "description": "Timer",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node server.js",
+    "test": "jest",
+    "lint": "eslint ./ --ignore-path .gitignore"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcksheridan/timer.git"
+  },
+  "author": "Sheridan McKisick",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mcksheridan/timer/issues"
+  },
+  "homepage": "https://github.com/mcksheridan/timer#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/node": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "eslint": "^7.22.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
