@@ -2,6 +2,10 @@ class Timer {
   constructor() {
     this.startingTime = 60;
     this.timerSpeed = 100;
+    this.remainingTime = this.startingTime;
+  }
+  setTimer(time) {
+    this.remainingTime = time;
   }
 }
 
@@ -14,6 +18,7 @@ const timerRemainingTime = document.querySelector('.timer_remaining-time');
 
 function setTimer(totalTime) {
   timerRemainingTime.innerHTML = totalTime;
+  timerObj.setTimer(totalTime);
 }
 
 setTimer(timerObj.startingTime);
