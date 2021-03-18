@@ -3,10 +3,15 @@ class Timer {
     this.startingTime = 60;
     this.timerSpeed = 100;
     this.remainingTime = this.startingTime;
+    this.message = 'Touch to Begin';
   }
 
   setTimer(time) {
     this.remainingTime = time;
+  }
+
+  updateMessage(message) {
+    this.message = message;
   }
 }
 
@@ -61,18 +66,21 @@ function startTimer() {
 }
 
 function beginTimer() {
+  timerObj.updateMessage('Pause');
   timerMessage.innerHTML = 'Pause';
   timerMessage.classList.add('timer_message--active');
   startTimer();
 }
 
 function pauseTimer() {
+  timerObj.updateMessage('Resume');
   timerMessage.innerHTML = 'Resume';
   timerMessage.classList.remove('timer_message--active');
   timerMessage.classList.add('timer_message--paused');
 }
 
 function resumeTimer() {
+  timerObj.updateMessage('Pause');
   timerMessage.innerHTML = 'Pause';
   timerMessage.classList.remove('timer_message--paused');
   timerMessage.classList.add('timer_message--active');
