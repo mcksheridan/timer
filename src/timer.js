@@ -65,23 +65,27 @@ function startTimer() {
   setInterval(decrementTimer, timerObj.timerSpeed);
 }
 
+function updateTimerUI() {
+  timerMessage.innerHTML = timerObj.message;
+}
+
 function beginTimer() {
   timerObj.updateMessage('Pause');
-  timerMessage.innerHTML = 'Pause';
+  updateTimerUI();
   timerMessage.classList.add('timer_message--active');
   startTimer();
 }
 
 function pauseTimer() {
   timerObj.updateMessage('Resume');
-  timerMessage.innerHTML = 'Resume';
+  updateTimerUI();
   timerMessage.classList.remove('timer_message--active');
   timerMessage.classList.add('timer_message--paused');
 }
 
 function resumeTimer() {
   timerObj.updateMessage('Pause');
-  timerMessage.innerHTML = 'Pause';
+  updateTimerUI();
   timerMessage.classList.remove('timer_message--paused');
   timerMessage.classList.add('timer_message--active');
 }
