@@ -4,6 +4,7 @@ class Timer {
     this.timerSpeed = 100;
     this.remainingTime = this.startingTime;
   }
+
   setTimer(time) {
     this.remainingTime = time;
   }
