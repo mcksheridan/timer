@@ -2,6 +2,7 @@ module.exports = {
   root: true,
   env: {
     node: true,
+    jest: true,
   },
   extends: [
     'eslint-config-airbnb-base',
@@ -21,9 +22,6 @@ module.exports = {
       files: [
         '**/src/**/*.spec.js',
       ],
-      env: {
-        jest: true,
-      },
     },
   ],
 };
