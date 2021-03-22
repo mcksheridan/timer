@@ -4,7 +4,7 @@ import Timer from './timer.js';
 const timerObj = new Timer();
 
 const timer = document.querySelector('.timer');
-const timerMessage = document.querySelector('.timer_message');
+const timerButton = document.querySelector('.timer-button');
 const timerProgressBar = document.querySelector('.timer_progress-bar');
 const timerRemainingTime = document.querySelector('.timer_remaining-time');
 
@@ -32,16 +32,16 @@ function decrementProgressBar() {
 
 function updateTimerUI() {
   timerRemainingTime.innerHTML = timerObj.remainingTime;
-  timerMessage.innerHTML = timerObj.message;
+  timerButton.innerHTML = timerObj.message;
   timerProgressBar.setAttribute('width', `${timerObj.progressPercent}%`);
   // Update timer class
   if (timerObj.state === 'Active') {
-    timerMessage.classList.add('timer_message--active');
-    timerMessage.classList.remove('timer_message--paused');
+    timerButton.classList.add('timer_message--active');
+    timerButton.classList.remove('timer_message--paused');
   }
   if (timerObj.state === 'Paused') {
-    timerMessage.classList.remove('timer_message--active');
-    timerMessage.classList.add('timer_message--paused');
+    timerButton.classList.remove('timer_message--active');
+    timerButton.classList.add('timer_message--paused');
   }
 }
 
@@ -92,4 +92,4 @@ timer.addEventListener('click', () => {
 // the user will see a timer of 0 seconds and "Loading" text
 
 timerRemainingTime.innerHTML = timerObj.startingTime;
-timerMessage.innerHTML = 'Touch to Begin';
+timerButton.innerHTML = 'Touch to Begin';
