@@ -9,13 +9,12 @@ const timerProgressBar = document.querySelector('.timer_progress-bar');
 const timerRemainingTime = document.querySelector('.timer_remaining-time');
 
 function decrementTimeRemaining() {
-  const currentTimeRemaining = timerRemainingTime.innerHTML;
   const timerMessageClass = timerMessage.getAttribute('class');
   if (timerMessageClass.includes('timer_message--paused')) {
     return;
   }
-  if (currentTimeRemaining > 0) {
-    timerObj.setTimer(currentTimeRemaining - 1);
+  if (timerObj.remainingTime > 0) {
+    timerObj.setTimer(timerObj.remainingTime - 1);
   }
 }
 
