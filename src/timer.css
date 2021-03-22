@@ -21,3 +21,8 @@
     font-size: 1rem;
     font-family: sans-serif;
 }
+
+.timer-button {
+  min-width: 30vw;
+  line-height: 2rem;
+}
