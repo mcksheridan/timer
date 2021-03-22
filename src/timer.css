@@ -22,6 +22,11 @@
     font-family: sans-serif;
 }
 
+.timer-button {
+  width: 90vw;
+  text-align: center;
+}
+
 .timer-button_control {
   min-width: 30vw;
   line-height: 2rem;
