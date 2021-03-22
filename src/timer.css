@@ -28,6 +28,8 @@
 }
 
 .timer-button_control {
-  min-width: 30vw;
+  width: 30vw;
+  min-width: 44px;
+  min-height: 44px;
   line-height: 2rem;
 }
