@@ -37,6 +37,10 @@ class Timer {
   updateProgressPercent(percent) {
     this.progressPercent = percent;
   }
+
+  decrementProgressPercent() {
+    this.updateProgressPercent(this.progressPercent - this.decreasePerInterval);
+  }
 }
 
 export default Timer;
