@@ -62,3 +62,17 @@ describe('Using a decreasePerInterval to decrement the progress percentage', () 
     expect(timerSetDecrease.progressPercent).toEqual(90);
   });
 });
+
+describe('Decrement time remaining on the timer', () => {
+  const timerDecrementTime = new Timer();
+  timerDecrementTime.remainingTime = 30;
+  test('Decrease the remaining time by 1', () => {
+    timerDecrementTime.decrementTimeRemaining();
+    expect(timerDecrementTime.remainingTime).toEqual(29);
+  });
+  test('Do not decrement time when the timer is paused', () => {
+    timerDecrementTime.state = 'Paused';
+    timerDecrementTime.decrementTimeRemaining();
+    expect(timerDecrementTime.remainingTime).toEqual(29);
+  });
+});
