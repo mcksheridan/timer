@@ -20,8 +20,7 @@ function decrementTimeRemaining() {
 function decrementProgressBar() {
   const progressBarWidth = timerProgressBar.getAttribute('width');
   const progressBarPercentage = parseFloat(progressBarWidth);
-  const progressBarStartingWidth = 100;
-  const decreasePerSecond = progressBarStartingWidth / timerObj.startingTime;
+  const decreasePerSecond = timerObj.startingProgressPercent / timerObj.startingTime;
   if (timerObj.state === 'Paused') {
     return;
   }
