@@ -59,6 +59,6 @@ describe('Using a decreasePerInterval to decrement the progress percentage', () 
   });
   test('Decrease the timer by the default decrease per interval', () => {
     timerSetDecrease.decrementProgressPercent();
-    expect(timerSetDecrease.progressPercent).toEqual(9);
+    expect(timerSetDecrease.progressPercent).toEqual(90);
   });
 });
