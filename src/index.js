@@ -13,8 +13,6 @@ function setTimer(totalTime) {
   timerObj.setTimer(totalTime);
 }
 
-setTimer(timerObj.startingTime);
-
 function decrementTimeRemaining() {
   const currentTimeRemaining = timerRemainingTime.innerHTML;
   const timerMessageClass = timerMessage.getAttribute('class');
@@ -89,4 +87,8 @@ timer.addEventListener('click', () => {
   }
 });
 
+// Initialize timer. If any of the JavaScript above should fail,
+// the user will see a timer of 0 seconds and "Loading" text
+
+timerRemainingTime.innerHTML = timerObj.startingTime;
 timerMessage.innerHTML = 'Touch to Begin';
