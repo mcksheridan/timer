@@ -21,3 +21,14 @@ describe('Updating the timer message', () => {
     expect(timerSetMessage.message).toBe('Pause');
   });
 });
+
+describe('Updating the timer\'s state', () => {
+  const timerSetState = new Timer();
+  test('Show the timer\'s default state', () => {
+    expect(timerSetState.state).toBe('Uninitialized');
+  });
+  test('Update the timer\'s state to active', () => {
+    timerSetState.updateState('Active');
+    expect(timerSetState.state).toBe('Active');
+  });
+});
