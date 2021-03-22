@@ -9,8 +9,7 @@ const timerProgressBar = document.querySelector('.timer_progress-bar');
 const timerRemainingTime = document.querySelector('.timer_remaining-time');
 
 function decrementTimeRemaining() {
-  const timerMessageClass = timerMessage.getAttribute('class');
-  if (timerMessageClass.includes('timer_message--paused')) {
+  if (timerObj.state === 'Paused') {
     return;
   }
   if (timerObj.remainingTime > 0) {
@@ -50,6 +49,7 @@ function startTimer() {
 }
 
 function beginTimer() {
+  timerObj.updateState('Active');
   timerObj.updateMessage('Pause');
   updateTimerUI();
   timerMessage.classList.add('timer_message--active');
@@ -57,6 +57,7 @@ function beginTimer() {
 }
 
 function pauseTimer() {
+  timerObj.updateState('Paused');
   timerObj.updateMessage('Resume');
   updateTimerUI();
   timerMessage.classList.remove('timer_message--active');
@@ -64,6 +65,7 @@ function pauseTimer() {
 }
 
 function resumeTimer() {
+  timerObj.updateState('Active');
   timerObj.updateMessage('Pause');
   updateTimerUI();
   timerMessage.classList.remove('timer_message--paused');
