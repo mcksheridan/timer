@@ -1,45 +1,44 @@
 // eslint-disable-next-line import/extensions
 import Timer from './timer.js';
 
-const timerObj = new Timer();
+const timer = new Timer();
 
-const timer = document.querySelector('.timer');
 const timerButton = document.querySelector('.timer-button');
 const timerProgressBar = document.querySelector('.timer_progress-bar');
 const timerRemainingTime = document.querySelector('.timer_remaining-time');
 
 function decrementTimeRemaining() {
-  if (timerObj.state === 'Paused') {
+  if (timer.state === 'Paused') {
     return;
   }
-  if (timerObj.remainingTime > 0) {
-    timerObj.setTimer(timerObj.remainingTime - 1);
+  if (timer.remainingTime > 0) {
+    timer.setTimer(timer.remainingTime - 1);
   }
 }
 
 function decrementProgressBar() {
-  if (timerObj.state === 'Paused') {
+  if (timer.state === 'Paused') {
     return;
   }
-  if (timerObj.progressPercent > timerObj.decreasePerInterval) {
-    timerObj.decrementProgressPercent();
+  if (timer.progressPercent > timer.decreasePerInterval) {
+    timer.decrementProgressPercent();
     return;
   }
-  if (timerObj.progressPercent >= 0) {
-    timerObj.updateProgressPercent(0);
+  if (timer.progressPercent >= 0) {
+    timer.updateProgressPercent(0);
   }
 }
 
 function updateTimerUI() {
-  timerRemainingTime.innerHTML = timerObj.remainingTime;
-  timerButton.innerHTML = timerObj.message;
-  timerProgressBar.setAttribute('width', `${timerObj.progressPercent}%`);
+  timerRemainingTime.innerHTML = timer.remainingTime;
+  timerButton.innerHTML = timer.message;
+  timerProgressBar.setAttribute('width', `${timer.progressPercent}%`);
   // Update timer class
-  if (timerObj.state === 'Active') {
+  if (timer.state === 'Active') {
     timerButton.classList.add('timer_message--active');
     timerButton.classList.remove('timer_message--paused');
   }
-  if (timerObj.state === 'Paused') {
+  if (timer.state === 'Paused') {
     timerButton.classList.remove('timer_message--active');
     timerButton.classList.add('timer_message--paused');
   }
@@ -52,38 +51,38 @@ function decrementTimer() {
 }
 
 function initializeTimer() {
-  setInterval(decrementTimer, timerObj.timerSpeed);
+  setInterval(decrementTimer, timer.timerSpeed);
 }
 
 function beginTimer() {
-  timerObj.updateState('Active');
-  timerObj.updateMessage('Pause');
+  timer.updateState('Active');
+  timer.updateMessage('Pause');
   initializeTimer();
   updateTimerUI();
 }
 
 function pauseTimer() {
-  timerObj.updateState('Paused');
-  timerObj.updateMessage('Resume');
+  timer.updateState('Paused');
+  timer.updateMessage('Resume');
   updateTimerUI();
 }
 
 function resumeTimer() {
-  timerObj.updateState('Active');
-  timerObj.updateMessage('Pause');
+  timer.updateState('Active');
+  timer.updateMessage('Pause');
   updateTimerUI();
 }
 
 timerButton.addEventListener('click', () => {
-  if (timerObj.state === 'Uninitialized') {
+  if (timer.state === 'Uninitialized') {
     beginTimer();
     return;
   }
-  if (timerObj.state === 'Active') {
+  if (timer.state === 'Active') {
     pauseTimer();
     return;
   }
-  if (timerObj.state === 'Paused') {
+  if (timer.state === 'Paused') {
     resumeTimer();
   }
 });
@@ -91,5 +90,5 @@ timerButton.addEventListener('click', () => {
 // Initialize timer. If any of the JavaScript above should fail,
 // the user will see a timer of 0 seconds and "Loading" text
 
-timerRemainingTime.innerHTML = timerObj.startingTime;
+timerRemainingTime.innerHTML = timer.startingTime;
 timerButton.innerHTML = 'Touch to Begin';
