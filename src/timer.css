@@ -5,10 +5,6 @@
     fill: plum;
 }
 
-.timer:hover {
-    cursor: pointer;
-}
-
 .timer_progress-bar {
     fill: #793698;
 }
