@@ -34,6 +34,15 @@ class Timer {
     this.message = message;
   }
 
+  decrementTimeRemaining() {
+    if (this.state === 'Paused') {
+      return;
+    }
+    if (this.remainingTime > 0) {
+      this.setTimer(this.remainingTime - 1);
+    }
+  }
+
   updateProgressPercent(percent) {
     this.progressPercent = percent;
   }
