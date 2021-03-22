@@ -50,6 +50,19 @@ class Timer {
   decrementProgressPercent() {
     this.updateProgressPercent(this.progressPercent - this.decreasePerInterval);
   }
+
+  decrementProgressBar() {
+    if (this.state === 'Paused') {
+      return;
+    }
+    if (this.progressPercent > this.decreasePerInterval) {
+      this.decrementProgressPercent();
+      return;
+    }
+    if (this.progressPercent >= 0) {
+      this.updateProgressPercent(0);
+    }
+  }
 }
 
 export default Timer;

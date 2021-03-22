@@ -7,19 +7,6 @@ const timerButton = document.querySelector('.timer-button_control');
 const timerProgressBar = document.querySelector('.timer_progress-bar');
 const timerRemainingTime = document.querySelector('.timer_remaining-time');
 
-function decrementProgressBar() {
-  if (timer.state === 'Paused') {
-    return;
-  }
-  if (timer.progressPercent > timer.decreasePerInterval) {
-    timer.decrementProgressPercent();
-    return;
-  }
-  if (timer.progressPercent >= 0) {
-    timer.updateProgressPercent(0);
-  }
-}
-
 function updateTimerUI() {
   timerRemainingTime.innerHTML = timer.remainingTime;
   timerButton.innerHTML = timer.message;
@@ -37,7 +24,7 @@ function updateTimerUI() {
 
 function decrementTimer() {
   timer.decrementTimeRemaining();
-  decrementProgressBar();
+  timer.decrementProgressBar();
   updateTimerUI();
 }
 
