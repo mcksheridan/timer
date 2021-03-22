@@ -25,8 +25,10 @@ function decrementProgressBar() {
   }
   if (progressBarPercentage > timerObj.decreasePerInterval) {
     timerProgressBar.setAttribute('width', `${progressBarPercentage - timerObj.decreasePerInterval}%`);
+    timerObj.decrementProgressPercent();
   } else if (progressBarPercentage >= 0) {
     timerProgressBar.setAttribute('width', '0%');
+    timerObj.updateProgressPercent(0);
   }
 }
 
