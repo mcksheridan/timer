@@ -53,7 +53,7 @@ function decrementTimer() {
   updateTimerUI();
 }
 
-function startTimer() {
+function initializeTimer() {
   setInterval(decrementTimer, timerObj.timerSpeed);
 }
 
@@ -61,7 +61,7 @@ function beginTimer() {
   timerObj.updateState('Active');
   timerObj.updateMessage('Pause');
   updateTimerUI();
-  startTimer();
+  initializeTimer();
 }
 
 function pauseTimer() {
