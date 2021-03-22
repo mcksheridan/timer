@@ -18,15 +18,13 @@ function decrementTimeRemaining() {
 }
 
 function decrementProgressBar() {
-  const progressBarWidth = timerProgressBar.getAttribute('width');
-  const progressBarPercentage = parseFloat(progressBarWidth);
   if (timerObj.state === 'Paused') {
     return;
   }
-  if (progressBarPercentage > timerObj.decreasePerInterval) {
-    timerProgressBar.setAttribute('width', `${progressBarPercentage - timerObj.decreasePerInterval}%`);
+  if (timerObj.progressPercent > timerObj.decreasePerInterval) {
+    timerProgressBar.setAttribute('width', `${timerObj.progressPercent - timerObj.decreasePerInterval}%`);
     timerObj.decrementProgressPercent();
-  } else if (progressBarPercentage >= 0) {
+  } else if (timerObj.progressPercent >= 0) {
     timerProgressBar.setAttribute('width', '0%');
     timerObj.updateProgressPercent(0);
   }
