@@ -22,8 +22,7 @@ function decrementProgressBar() {
   const progressBarPercentage = parseFloat(progressBarWidth);
   const progressBarStartingWidth = 100;
   const decreasePerSecond = progressBarStartingWidth / timerObj.startingTime;
-  const timerMessageClass = timerMessage.getAttribute('class');
-  if (timerMessageClass.includes('timer_message--paused')) {
+  if (timerObj.state === 'Paused') {
     return;
   }
   if (progressBarPercentage > decreasePerSecond) {
@@ -60,8 +59,8 @@ function initializeTimer() {
 function beginTimer() {
   timerObj.updateState('Active');
   timerObj.updateMessage('Pause');
-  updateTimerUI();
   initializeTimer();
+  updateTimerUI();
 }
 
 function pauseTimer() {
@@ -77,14 +76,15 @@ function resumeTimer() {
 }
 
 timer.addEventListener('click', () => {
-  const timerMessageClass = timerMessage.getAttribute('class');
-  if (timerMessageClass === 'timer_message') {
+  if (timerObj.state === 'Uninitialized') {
     beginTimer();
+    return;
   }
-  if (timerMessageClass.includes('timer_message--active')) {
+  if (timerObj.state === 'Active') {
     pauseTimer();
+    return;
   }
-  if (timerMessageClass.includes('timer_message--paused')) {
+  if (timerObj.state === 'Paused') {
     resumeTimer();
   }
 });
