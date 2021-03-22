@@ -22,10 +22,8 @@ function decrementProgressBar() {
     return;
   }
   if (timerObj.progressPercent > timerObj.decreasePerInterval) {
-    timerProgressBar.setAttribute('width', `${timerObj.progressPercent - timerObj.decreasePerInterval}%`);
     timerObj.decrementProgressPercent();
   } else if (timerObj.progressPercent >= 0) {
-    timerProgressBar.setAttribute('width', '0%');
     timerObj.updateProgressPercent(0);
   }
 }
@@ -41,6 +39,11 @@ function updateTimerUI() {
   if (timerObj.state === 'Paused') {
     timerMessage.classList.remove('timer_message--active');
     timerMessage.classList.add('timer_message--paused');
+  }
+  if (timerObj.progressPercent > timerObj.decreasePerInterval) {
+    timerProgressBar.setAttribute('width', `${timerObj.progressPercent - timerObj.decreasePerInterval}%`);
+  } else if (timerObj.progressPercent >= 0) {
+    timerProgressBar.setAttribute('width', '0%');
   }
 }
 
