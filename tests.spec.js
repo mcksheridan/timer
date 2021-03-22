@@ -32,3 +32,14 @@ describe('Updating the timer\'s state', () => {
     expect(timerSetState.state).toBe('Active');
   });
 });
+
+describe('Updating the progress percentage', () => {
+  const timerSetProgressPercentage = new Timer();
+  test('Show the timer\'s full, starting progress percentage', () => {
+    expect(timerSetProgressPercentage.progressPercent).toEqual(100);
+  });
+  test('Update the timer\'s progress percentage to 85%', () => {
+    timerSetProgressPercentage.updateProgressPercentage(85);
+    expect(timerSetProgressPercentage.progressPercent).toEqual(85);
+  });
+});
