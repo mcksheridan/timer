@@ -20,12 +20,11 @@ function decrementTimeRemaining() {
 function decrementProgressBar() {
   const progressBarWidth = timerProgressBar.getAttribute('width');
   const progressBarPercentage = parseFloat(progressBarWidth);
-  const decreasePerSecond = timerObj.startingProgressPercent / timerObj.startingTime;
   if (timerObj.state === 'Paused') {
     return;
   }
-  if (progressBarPercentage > decreasePerSecond) {
-    timerProgressBar.setAttribute('width', `${progressBarPercentage - decreasePerSecond}%`);
+  if (progressBarPercentage > timerObj.decreasePerInterval) {
+    timerProgressBar.setAttribute('width', `${progressBarPercentage - timerObj.decreasePerInterval}%`);
   } else if (progressBarPercentage >= 0) {
     timerProgressBar.setAttribute('width', '0%');
   }
