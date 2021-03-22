@@ -74,7 +74,7 @@ function resumeTimer() {
   updateTimerUI();
 }
 
-timer.addEventListener('click', () => {
+timerButton.addEventListener('click', () => {
   if (timerObj.state === 'Uninitialized') {
     beginTimer();
     return;
