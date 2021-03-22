@@ -36,6 +36,15 @@ function decrementProgressBar() {
 function updateTimerUI() {
   timerRemainingTime.innerHTML = timerObj.remainingTime;
   timerMessage.innerHTML = timerObj.message;
+  // Update timer class
+  if (timerObj.state === 'Active') {
+    timerMessage.classList.add('timer_message--active');
+    timerMessage.classList.remove('timer_message--paused');
+  }
+  if (timerObj.state === 'Paused') {
+    timerMessage.classList.remove('timer_message--active');
+    timerMessage.classList.add('timer_message--paused');
+  }
 }
 
 function decrementTimer() {
@@ -52,7 +61,6 @@ function beginTimer() {
   timerObj.updateState('Active');
   timerObj.updateMessage('Pause');
   updateTimerUI();
-  timerMessage.classList.add('timer_message--active');
   startTimer();
 }
 
@@ -60,16 +68,12 @@ function pauseTimer() {
   timerObj.updateState('Paused');
   timerObj.updateMessage('Resume');
   updateTimerUI();
-  timerMessage.classList.remove('timer_message--active');
-  timerMessage.classList.add('timer_message--paused');
 }
 
 function resumeTimer() {
   timerObj.updateState('Active');
   timerObj.updateMessage('Pause');
   updateTimerUI();
-  timerMessage.classList.remove('timer_message--paused');
-  timerMessage.classList.add('timer_message--active');
 }
 
 timer.addEventListener('click', () => {
