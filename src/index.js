@@ -8,11 +8,6 @@ const timerMessage = document.querySelector('.timer_message');
 const timerProgressBar = document.querySelector('.timer_progress-bar');
 const timerRemainingTime = document.querySelector('.timer_remaining-time');
 
-function setTimer(totalTime) {
-  timerRemainingTime.innerHTML = totalTime;
-  timerObj.setTimer(totalTime);
-}
-
 function decrementTimeRemaining() {
   const currentTimeRemaining = timerRemainingTime.innerHTML;
   const timerMessageClass = timerMessage.getAttribute('class');
@@ -20,7 +15,7 @@ function decrementTimeRemaining() {
     return;
   }
   if (currentTimeRemaining > 0) {
-    setTimer(currentTimeRemaining - 1);
+    timerObj.setTimer(currentTimeRemaining - 1);
   }
 }
 
@@ -40,17 +35,19 @@ function decrementProgressBar() {
   }
 }
 
+function updateTimerUI() {
+  timerRemainingTime.innerHTML = timerObj.remainingTime;
+  timerMessage.innerHTML = timerObj.message;
+}
+
 function decrementTimer() {
   decrementTimeRemaining();
   decrementProgressBar();
+  updateTimerUI();
 }
 
 function startTimer() {
   setInterval(decrementTimer, timerObj.timerSpeed);
-}
-
-function updateTimerUI() {
-  timerMessage.innerHTML = timerObj.message;
 }
 
 function beginTimer() {
