@@ -39,7 +39,14 @@ describe('Updating the progress percentage', () => {
     expect(timerSetProgressPercentage.progressPercent).toEqual(100);
   });
   test('Update the timer\'s progress percentage to 85%', () => {
-    timerSetProgressPercentage.updateProgressPercentage(85);
+    timerSetProgressPercentage.updateProgressPercent(85);
     expect(timerSetProgressPercentage.progressPercent).toEqual(85);
+  });
+  test('Restore the timer progress percent to the original value', () => {
+    timerSetProgressPercentage.updateProgressPercent(
+      timerSetProgressPercentage.startingProgressPercent,
+    );
+    expect(timerSetProgressPercentage.progressPercent)
+      .toEqual(timerSetProgressPercentage.startingProgressPercent);
   });
 });
