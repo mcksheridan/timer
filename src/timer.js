@@ -5,6 +5,8 @@ class Timer {
     this.remainingTime = this.startingTime;
     this.state = 'Uninitialized';
     this.message = 'Touch to Begin';
+    this.startingProgressPercent = 100;
+    this.progressPercent = this.startingProgressPercent;
   }
 
   setTimer(time) {
@@ -17,6 +19,10 @@ class Timer {
 
   updateMessage(message) {
     this.message = message;
+  }
+
+  updateProgressPercent(percent) {
+    this.progressPercent = percent;
   }
 }
 
