@@ -76,3 +76,23 @@ describe('Decrement time remaining on the timer', () => {
     expect(timerDecrementTime.remainingTime).toEqual(29);
   });
 });
+
+describe('Decrement progress bar on the timer', () => {
+  const timerDecrementProgress = new Timer();
+  timerDecrementProgress.updateStartingTime(10);
+  test('Decrement progress bar by ten percent', () => {
+    timerDecrementProgress.decrementProgressBar();
+    expect(timerDecrementProgress.progressPercent).toEqual(90);
+  });
+  test('Do not decrement progress bar when timer is paused', () => {
+    timerDecrementProgress.state = 'Paused';
+    timerDecrementProgress.decrementProgressBar();
+    expect(timerDecrementProgress.progressPercent).toEqual(90);
+  });
+  test('Decrease progress bar to zero when time remaining is equal to/greater than zero but less than the decrease per interval value', () => {
+    timerDecrementProgress.state = 'Active';
+    timerDecrementProgress.progressPercent = 9;
+    timerDecrementProgress.decrementProgressBar();
+    expect(timerDecrementProgress.progressPercent).toEqual(0);
+  });
+});
