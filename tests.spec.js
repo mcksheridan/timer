@@ -53,7 +53,7 @@ describe('Updating the progress percentage', () => {
 
 describe('Using a decreasePerInterval to decrement the progress percentage', () => {
   const timerSetDecrease = new Timer();
-  timerSetDecrease.startingTime = 10;
+  timerSetDecrease.updateStartingTime(10);
   test('Show the timer\'s default decrease per interval', () => {
     expect(timerSetDecrease.decreasePerInterval).toEqual(10);
   });

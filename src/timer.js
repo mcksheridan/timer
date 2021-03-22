@@ -7,10 +7,23 @@ class Timer {
     this.message = 'Touch to Begin';
     this.startingProgressPercent = 100;
     this.progressPercent = this.startingProgressPercent;
+    this.decreasePerInterval = this.startingProgressPercent / this.startingTime;
   }
 
   setTimer(time) {
     this.remainingTime = time;
+  }
+
+  // When changing the starting time, you must also change all properties
+  // that are dependent on the starting time.
+  recalculateValues() {
+    this.remainingTime = this.startingTime;
+    this.decreasePerInterval = this.startingProgressPercent / this.startingTime;
+  }
+
+  updateStartingTime(time) {
+    this.startingTime = time;
+    this.recalculateValues();
   }
 
   updateState(state) {
