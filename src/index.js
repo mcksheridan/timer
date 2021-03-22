@@ -23,7 +23,9 @@ function decrementProgressBar() {
   }
   if (timerObj.progressPercent > timerObj.decreasePerInterval) {
     timerObj.decrementProgressPercent();
-  } else if (timerObj.progressPercent >= 0) {
+    return;
+  }
+  if (timerObj.progressPercent >= 0) {
     timerObj.updateProgressPercent(0);
   }
 }
