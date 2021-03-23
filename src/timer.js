@@ -1,6 +1,11 @@
+// eslint-disable-next-line import/extensions
+import template from './timerHTML.js';
+
 class Timer extends HTMLElement {
   constructor() {
     super(); // Call the constructor of HTMLElement
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
     this.startingTime = 60;
     this.timerSpeed = 1000;
     this.remainingTime = this.startingTime;
