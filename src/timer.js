@@ -6,7 +6,7 @@ class Timer extends HTMLElement {
     super(); // Call the constructor of HTMLElement
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
-    this.startingTime = 60;
+    this.startingTime = this.getAttribute('time');
     this.timerSpeed = 1000;
     this.remainingTime = this.startingTime;
     this.state = 'Uninitialized';
