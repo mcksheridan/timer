@@ -1,6 +1,8 @@
 // eslint-disable-next-line import/extensions
 import Timer from './timer.js';
 
+window.customElements.define('timer-object', Timer);
+
 const timer = new Timer();
 
 const timerButton = document.querySelector('.timer-button_control');

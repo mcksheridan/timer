@@ -1,5 +1,6 @@
-class Timer {
+class Timer extends HTMLElement {
   constructor() {
+    super(); // Call the constructor of HTMLElement
     this.startingTime = 60;
     this.timerSpeed = 1000;
     this.remainingTime = this.startingTime;
