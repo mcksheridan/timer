@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel=stylesheet type=text/css href="timer.css">
     <title>Timer</title>
-</head>
-<body>
+  </head>
+  <body>
 
-    <svg class="timer" width="90vw" height="2.5rem">
+    <header>
+      <h2>Timer</h2>
+    </header>
+
+    <main>
+      <svg class="timer" width="90vw" height="2.5rem">
         <rect class="timer_background" width="100%" height="40" />
         <rect class="timer_progress-bar" width="100%" height="40" />
         <text class="timer_remaining-time" x="1%" y="60%">0</text>
-    </svg>
+      </svg>
+    </main>
 
-    <div class="timer-button">
-      <button type="button" class="timer-button_control">Loading...</button>
-    </div>
+    <footer class="timer-button">
+        <button type="button" class="timer-button_control">Loading...</button>
+    </footer>
 
     <script src="index.js" type="module"></script>
 
-</body>
+  </body>
 </html>
