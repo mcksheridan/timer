@@ -1,11 +1,11 @@
-.timer {
+.timer-bar {
     font-family: sans-serif;
     border: 1px solid black;
     border-radius: 14px;
     fill: plum;
 }
 
-.timer_progress-bar {
+.timer-bar_progress {
     fill: #793698;
 }
 
@@ -16,7 +16,7 @@
     fill: white;
 }
 
-.timer_remaining-time {
+.timer-bar_remaining-time {
     fill: white;
     font-size: 1rem;
     font-family: sans-serif;

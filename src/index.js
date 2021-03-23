@@ -4,8 +4,8 @@ import Timer from './timer.js';
 const timer = new Timer();
 
 const timerButton = document.querySelector('.timer-button_control');
-const timerProgressBar = document.querySelector('.timer_progress-bar');
-const timerRemainingTime = document.querySelector('.timer_remaining-time');
+const timerProgressBar = document.querySelector('.timer-bar_progress');
+const timerRemainingTime = document.querySelector('.timer-bar_remaining-time');
 
 function updateTimerUI() {
   timerRemainingTime.innerHTML = timer.remainingTime;
