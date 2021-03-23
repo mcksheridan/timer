@@ -1,5 +1,4 @@
-const timerTemplate = document.createElement('template');
-timerTemplate.innerHTML = `
+const timerTemplate = `
 
   <link rel=stylesheet type=text/css href="timer.css">
 
