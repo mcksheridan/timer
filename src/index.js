@@ -66,9 +66,3 @@ timerButton.addEventListener('click', () => {
     resumeTimer();
   }
 });
-
-// Initialize timer. If any of the JavaScript above should fail,
-// the user will see a timer of 0 seconds and "Loading" text
-
-timerRemainingTime.innerHTML = timer.startingTime;
-timerButton.innerHTML = 'Touch to Begin';

@@ -16,6 +16,13 @@ class Timer extends HTMLElement {
     this.decreasePerInterval = this.startingProgressPercent / this.startingTime;
   }
 
+  connectedCallback() {
+    const timerButton = this.querySelector('.timer-button_control');
+    const timerRemainingTime = this.querySelector('.timer-bar_remaining-time');
+    timerRemainingTime.innerHTML = this.startingTime;
+    timerButton.innerHTML = 'Touch to Begin';
+  }
+
   setTimer(time) {
     this.remainingTime = time;
   }
