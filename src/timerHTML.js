@@ -5,7 +5,7 @@ const timerTemplate = `
     <section>
 
       <header>
-        <h2>Timer</h2>
+        <h2><span class="timer-header_seconds"></span> Second Timer</h2>
       </header>
 
       <main>

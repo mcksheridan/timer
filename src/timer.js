@@ -18,8 +18,10 @@ class Timer extends HTMLElement {
   connectedCallback() {
     const timerButton = this.querySelector('.timer-button_control');
     const timerRemainingTime = this.querySelector('.timer-bar_remaining-time');
+    const timerHeaderSeconds = this.querySelector('.timer-header_seconds');
     timerRemainingTime.innerHTML = this.startingTime;
     timerButton.innerHTML = 'Touch to Begin';
+    timerHeaderSeconds.innerText = this.startingTime;
   }
 
   setTimer(time) {
