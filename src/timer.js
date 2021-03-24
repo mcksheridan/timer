@@ -6,13 +6,13 @@ class Timer extends HTMLElement {
     super(); // Call the constructor of HTMLElement
     this.innerHTML = template;
     this.state = 'Uninitialized';
-    this.startingTime = this.getAttribute('time');
+    this.startingTime = document.querySelector('timer-object').getAttribute('time');
     this.timerSpeed = 1000;
-    this.remainingTime = document.querySelector('timer-object').getAttribute('time');
+    this.remainingTime = this.startingTime;
     this.message = 'Touch to Begin';
     this.startingProgressPercent = 100;
     this.progressPercent = this.startingProgressPercent;
-    this.decreasePerInterval = this.startingProgressPercent / document.querySelector('timer-object').getAttribute('time');
+    this.decreasePerInterval = this.startingProgressPercent / this.startingTime;
   }
 
   connectedCallback() {
