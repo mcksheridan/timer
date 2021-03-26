@@ -114,6 +114,24 @@ class Timer extends HTMLElement {
     }
   }
 
+  updateTimerUI() {
+    const timerRemainingTime = this.shadowRoot.querySelector('.timer-bar_remaining-time');
+    const timerButton = this.shadowRoot.querySelector('.timer-button_control');
+    const timerProgressBar = this.shadowRoot.querySelector('.timer-bar_progress');
+    timerRemainingTime.innerHTML = this.remainingTime;
+    timerButton.innerHTML = this.message;
+    timerProgressBar.setAttribute('width', `${this.progressPercent}%`);
+    // Update timer class
+    if (this.state === 'Active') {
+      timerButton.classList.add('timer_message--active');
+      timerButton.classList.remove('timer_message--paused');
+    }
+    if (this.state === 'Paused') {
+      timerButton.classList.remove('timer_message--active');
+      timerButton.classList.add('timer_message--paused');
+    }
+  }
+
   initializeTimer() {
     setInterval(this.decrementTimer, this.timerSpeed);
   }
@@ -122,7 +140,7 @@ class Timer extends HTMLElement {
     this.updateState('Active');
     this.updateMessage('Pause');
     this.initializeTimer();
-    updateTimerUI();
+    this.updateTimerUI();
   }
 }
 
@@ -132,24 +150,7 @@ window.customElements.define('timer-object', Timer);
 
 const timer = new Timer();
 
-const timerButton = document.querySelector('.timer-button_control');
-const timerProgressBar = document.querySelector('.timer-bar_progress');
 const timerRemainingTime = document.querySelector('.timer-bar_remaining-time');
-
-function updateTimerUI() {
-  timerRemainingTime.innerHTML = timer.remainingTime;
-  timerButton.innerHTML = timer.message;
-  timerProgressBar.setAttribute('width', `${timer.progressPercent}%`);
-  // Update timer class
-  if (timer.state === 'Active') {
-    timerButton.classList.add('timer_message--active');
-    timerButton.classList.remove('timer_message--paused');
-  }
-  if (timer.state === 'Paused') {
-    timerButton.classList.remove('timer_message--active');
-    timerButton.classList.add('timer_message--paused');
-  }
-}
 
 function decrementTimer() {
   timer.decrementTimeRemaining();
