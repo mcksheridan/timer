@@ -47,7 +47,7 @@ class Timer extends HTMLElement {
     timerHeaderSeconds.innerText = this.startingTime;
     timerButton.addEventListener('click', () => {
       if (this.state === 'Uninitialized') {
-        beginTimer();
+        this.beginTimer();
         return;
       }
       if (this.state === 'Active') {
@@ -113,6 +113,13 @@ class Timer extends HTMLElement {
       this.updateProgressPercent(0);
     }
   }
+
+  beginTimer() {
+    this.updateState('Active');
+    this.updateMessage('Pause');
+    initializeTimer();
+    updateTimerUI();
+  }
 }
 
 export default Timer;
@@ -148,13 +155,6 @@ function decrementTimer() {
 
 function initializeTimer() {
   setInterval(decrementTimer, timer.timerSpeed);
-}
-
-function beginTimer() {
-  timer.updateState('Active');
-  timer.updateMessage('Pause');
-  initializeTimer();
-  updateTimerUI();
 }
 
 function pauseTimer() {
