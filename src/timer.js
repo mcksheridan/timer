@@ -114,10 +114,14 @@ class Timer extends HTMLElement {
     }
   }
 
+  initializeTimer() {
+    setInterval(this.decrementTimer, this.timerSpeed);
+  }
+
   beginTimer() {
     this.updateState('Active');
     this.updateMessage('Pause');
-    initializeTimer();
+    this.initializeTimer();
     updateTimerUI();
   }
 }
@@ -151,10 +155,6 @@ function decrementTimer() {
   timer.decrementTimeRemaining();
   timer.decrementProgressBar();
   updateTimerUI();
-}
-
-function initializeTimer() {
-  setInterval(decrementTimer, timer.timerSpeed);
 }
 
 function pauseTimer() {
