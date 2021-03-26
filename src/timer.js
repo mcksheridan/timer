@@ -39,9 +39,9 @@ class Timer extends HTMLElement {
 
   connectedCallback() {
     this.shadowRoot.innerHTML = template;
-    const timerButton = this.querySelector('.timer-button_control');
-    const timerRemainingTime = this.querySelector('.timer-bar_remaining-time');
-    const timerHeaderSeconds = this.querySelector('.timer-header_seconds');
+    const timerRemainingTime = this.shadowRoot.querySelector('.timer-bar_remaining-time');
+    const timerButton = this.shadowRoot.querySelector('.timer-button_control');
+    const timerHeaderSeconds = this.shadowRoot.querySelector('.timer-header_seconds');
     timerRemainingTime.innerHTML = this.startingTime;
     timerButton.innerHTML = 'Touch to Begin';
     timerHeaderSeconds.innerText = this.startingTime;
