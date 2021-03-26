@@ -28,7 +28,7 @@ class Timer extends HTMLElement {
     super(); // Call the constructor of HTMLElement
     this.attachShadow({ mode: 'open' });
     this.state = 'Uninitialized';
-    this.startingTime = document.querySelector('timer-object').getAttribute('time');
+    this.startingTime = this.getAttribute('time');
     this.timerSpeed = 1000;
     this.remainingTime = this.startingTime;
     this.message = 'Touch to Begin';
