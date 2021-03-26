@@ -45,6 +45,19 @@ class Timer extends HTMLElement {
     timerRemainingTime.innerHTML = this.startingTime;
     timerButton.innerHTML = 'Touch to Begin';
     timerHeaderSeconds.innerText = this.startingTime;
+    timerButton.addEventListener('click', () => {
+      if (this.state === 'Uninitialized') {
+        beginTimer();
+        return;
+      }
+      if (this.state === 'Active') {
+        pauseTimer();
+        return;
+      }
+      if (this.state === 'Paused') {
+        resumeTimer();
+      }
+    });
   }
 
   setTimer(time) {
@@ -155,17 +168,3 @@ function resumeTimer() {
   timer.updateMessage('Pause');
   updateTimerUI();
 }
-
-timerButton.addEventListener('click', () => {
-  if (timer.state === 'Uninitialized') {
-    beginTimer();
-    return;
-  }
-  if (timer.state === 'Active') {
-    pauseTimer();
-    return;
-  }
-  if (timer.state === 'Paused') {
-    resumeTimer();
-  }
-});
