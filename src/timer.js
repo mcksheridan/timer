@@ -26,7 +26,7 @@ const template = `
 class Timer extends HTMLElement {
   constructor() {
     super(); // Call the constructor of HTMLElement
-    this.innerHTML = template;
+    this.attachShadow({ mode: 'open' });
     this.state = 'Uninitialized';
     this.startingTime = document.querySelector('timer-object').getAttribute('time');
     this.timerSpeed = 1000;
@@ -38,6 +38,7 @@ class Timer extends HTMLElement {
   }
 
   connectedCallback() {
+    this.shadowRoot.innerHTML = template;
     const timerButton = this.querySelector('.timer-button_control');
     const timerRemainingTime = this.querySelector('.timer-bar_remaining-time');
     const timerHeaderSeconds = this.querySelector('.timer-header_seconds');
