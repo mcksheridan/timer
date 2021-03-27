@@ -49,6 +49,10 @@ class Timer extends HTMLElement {
       if (this.state === 'Paused') {
         this.resumeTimer();
       }
+      if (this.state === 'Finished') {
+        this.resetTimer();
+        this.beginTimer();
+      }
     });
   }
 
@@ -159,6 +163,11 @@ class Timer extends HTMLElement {
     this.updateState('Active');
     this.updateMessage('Pause');
     this.updateTimerUI();
+  }
+
+  resetTimer() {
+    this.remainingTime = this.startingTime;
+    this.progressPercent = this.startingProgressPercent;
   }
 }
 
