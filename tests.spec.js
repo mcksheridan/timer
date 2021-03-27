@@ -93,3 +93,24 @@ describe('Decrement progress bar on the timer', () => {
     expect(timerDecrementProgress.progressPercent).toEqual(0);
   });
 });
+
+describe('A time of zero gives the option of restarting', () => {
+  const timerRestartOption = new Timer();
+  timerRestartOption.remainingTime = 1;
+  timerRestartOption.state = 'Active';
+  timerRestartOption.allowRestart();
+  test('Timer state is still "Active" when not zero', () => {
+    expect(timerRestartOption.state).toBe('Active');
+    expect(timerRestartOption.remainingTime).toEqual(1);
+  });
+  test('Once timer is zero, the next call to decrementTimer() will change state to "Finished"', () => {
+    timerRestartOption.remainingTime = 0;
+    timerRestartOption.allowRestart();
+    expect(timerRestartOption.state).toBe('Finished');
+    expect(timerRestartOption.remainingTime).toEqual(0);
+  });
+  test('Timer message is "Restart" when timer state is "Finished"', () => {
+    expect(timerRestartOption.message).toBe('Restart');
+    expect(timerRestartOption.remainingTime).toEqual(0);
+  });
+});
