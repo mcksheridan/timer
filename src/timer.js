@@ -1,7 +1,4 @@
 const template = `
-
-    <section>
-
       <header>
         <h2><span class="timer-header_seconds"></span> Second Timer</h2>
       </header>
@@ -17,8 +14,6 @@ const template = `
       <footer class="timer-button">
           <button type="button" class="timer-button_control">Loading...</button>
       </footer>
-
-    </section>
 `;
 
 class Timer extends HTMLElement {
