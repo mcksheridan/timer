@@ -55,7 +55,7 @@ class Timer extends HTMLElement {
         return;
       }
       if (this.state === 'Paused') {
-        resumeTimer();
+        this.resumeTimer();
       }
     });
   }
@@ -154,6 +154,12 @@ class Timer extends HTMLElement {
     this.updateMessage('Resume');
     this.updateTimerUI();
   }
+
+  resumeTimer() {
+    this.updateState('Active');
+    this.updateMessage('Pause');
+    this.updateTimerUI();
+  }
 }
 
 export default Timer;
@@ -163,9 +169,3 @@ window.customElements.define('timer-object', Timer);
 const timer = new Timer();
 
 const timerRemainingTime = document.querySelector('.timer-bar_remaining-time');
-
-function resumeTimer() {
-  timer.updateState('Active');
-  timer.updateMessage('Pause');
-  updateTimerUI();
-}
