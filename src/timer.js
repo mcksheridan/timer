@@ -28,6 +28,7 @@ class Timer extends HTMLElement {
     this.startingProgressPercent = 100;
     this.progressPercent = this.startingProgressPercent;
     this.decreasePerInterval = this.startingProgressPercent / this.startingTime;
+    this.interval = undefined;
   }
 
   connectedCallback() {
@@ -51,6 +52,7 @@ class Timer extends HTMLElement {
       }
       if (this.state === 'Finished') {
         this.resetTimer();
+        clearInterval(this.interval);
         this.beginTimer();
       }
     });
@@ -143,7 +145,7 @@ class Timer extends HTMLElement {
   }
 
   initializeTimer() {
-    setInterval(this.decrementTimer.bind(this), this.timerSpeed);
+    this.interval = setInterval(this.decrementTimer.bind(this), this.timerSpeed);
   }
 
   beginTimer() {
