@@ -26,7 +26,7 @@ const template = `
 class Timer extends HTMLElement {
   constructor() {
     super(); // Call the constructor of HTMLElement
-    this.attachShadow({ mode: 'open' });
+    this.innerHTML = template;
     this.state = 'Uninitialized';
     this.startingTime = this.getAttribute('time');
     this.timerSpeed = 1000;
@@ -38,10 +38,9 @@ class Timer extends HTMLElement {
   }
 
   connectedCallback() {
-    this.shadowRoot.innerHTML = template;
-    const timerRemainingTime = this.shadowRoot.querySelector('.timer-bar_remaining-time');
-    const timerButton = this.shadowRoot.querySelector('.timer-button_control');
-    const timerHeaderSeconds = this.shadowRoot.querySelector('.timer-header_seconds');
+    const timerRemainingTime = this.querySelector('.timer-bar_remaining-time');
+    const timerButton = this.querySelector('.timer-button_control');
+    const timerHeaderSeconds = this.querySelector('.timer-header_seconds');
     timerRemainingTime.innerHTML = this.startingTime;
     timerButton.innerHTML = 'Touch to Begin';
     timerHeaderSeconds.innerText = this.startingTime;
@@ -121,9 +120,9 @@ class Timer extends HTMLElement {
   }
 
   updateTimerUI() {
-    const timerRemainingTime = this.shadowRoot.querySelector('.timer-bar_remaining-time');
-    const timerButton = this.shadowRoot.querySelector('.timer-button_control');
-    const timerProgressBar = this.shadowRoot.querySelector('.timer-bar_progress');
+    const timerRemainingTime = this.querySelector('.timer-bar_remaining-time');
+    const timerButton = this.querySelector('.timer-button_control');
+    const timerProgressBar = this.querySelector('.timer-bar_progress');
     timerRemainingTime.innerHTML = this.remainingTime;
     timerButton.innerHTML = this.message;
     timerProgressBar.setAttribute('width', `${this.progressPercent}%`);
