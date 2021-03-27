@@ -165,7 +165,3 @@ class Timer extends HTMLElement {
 export default Timer;
 
 window.customElements.define('timer-object', Timer);
-
-const timer = new Timer();
-
-const timerRemainingTime = document.querySelector('.timer-bar_remaining-time');
