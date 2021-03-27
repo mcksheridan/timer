@@ -1,7 +1,5 @@
 const template = `
 
-  <link rel=stylesheet type=text/css href="timer.css">
-
     <section>
 
       <header>
