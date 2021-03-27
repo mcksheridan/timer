@@ -114,6 +114,12 @@ class Timer extends HTMLElement {
     }
   }
 
+  decrementTimer() {
+    this.decrementTimeRemaining();
+    this.decrementProgressBar();
+    this.updateTimerUI();
+  }
+
   updateTimerUI() {
     const timerRemainingTime = this.shadowRoot.querySelector('.timer-bar_remaining-time');
     const timerButton = this.shadowRoot.querySelector('.timer-button_control');
@@ -133,7 +139,7 @@ class Timer extends HTMLElement {
   }
 
   initializeTimer() {
-    setInterval(this.decrementTimer, this.timerSpeed);
+    setInterval(this.decrementTimer.bind(this), this.timerSpeed);
   }
 
   beginTimer() {
@@ -151,12 +157,6 @@ window.customElements.define('timer-object', Timer);
 const timer = new Timer();
 
 const timerRemainingTime = document.querySelector('.timer-bar_remaining-time');
-
-function decrementTimer() {
-  timer.decrementTimeRemaining();
-  timer.decrementProgressBar();
-  updateTimerUI();
-}
 
 function pauseTimer() {
   timer.updateState('Paused');
