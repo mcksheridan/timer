@@ -1,5 +1,5 @@
 const template = `
-      <header>
+      <header class="timer-header">
         <h2><span class="timer-header_seconds"></span> Second Timer</h2>
       </header>
 
