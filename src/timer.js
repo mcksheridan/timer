@@ -219,9 +219,14 @@ class Timer extends HTMLElement {
     this.updateTimerUI();
   }
 
-  resetTimer() {
+  resetTime() {
     this.remainingTime = this.startingTime;
     this.progressPercent = this.startingProgressPercent;
+  }
+
+  resetTimer() {
+    this.resetTime();
+    this.currentExercise = 0;
   }
 }
 
