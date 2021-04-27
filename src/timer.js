@@ -1,6 +1,8 @@
 const template = `
       <header class="timer-header">
         <h2><span class="timer-header__seconds"></span> Second Timer</h2>
+        <p>Current Exercise: <span class="timer-header__current-exercise"></p>
+        <p>Upcoming Exercise: <span class="timer-header__upcoming-exercise"></p>
       </header>
 
       <main>
