@@ -1,18 +1,18 @@
 const template = `
       <header class="timer-header">
-        <h2><span class="timer-header_seconds"></span> Second Timer</h2>
+        <h2><span class="timer-header__seconds"></span> Second Timer</h2>
       </header>
 
       <main>
         <svg class="timer-bar" width="90vw" height="2.5rem">
-          <rect class="timer-bar_background" width="100%" height="40" />
-          <rect class="timer-bar_progress" width="100%" height="40" />
-          <text class="timer-bar_remaining-time" x="1%" y="60%">0</text>
+          <rect class="timer-bar__background" width="100%" height="40" />
+          <rect class="timer-bar__progress" width="100%" height="40" />
+          <text class="timer-bar__remaining-time" x="1%" y="60%">0</text>
         </svg>
       </main>
 
       <footer class="timer-button">
-          <button type="button" class="timer-button_control">Loading...</button>
+          <button type="button" class="timer-button__control">Loading...</button>
       </footer>
 `;
 
@@ -32,9 +32,9 @@ class Timer extends HTMLElement {
   }
 
   connectedCallback() {
-    const timerRemainingTime = this.querySelector('.timer-bar_remaining-time');
-    const timerButton = this.querySelector('.timer-button_control');
-    const timerHeaderSeconds = this.querySelector('.timer-header_seconds');
+    const timerRemainingTime = this.querySelector('.timer-bar__remaining-time');
+    const timerButton = this.querySelector('.timer-button__control');
+    const timerHeaderSeconds = this.querySelector('.timer-header__seconds');
     timerRemainingTime.innerHTML = this.startingTime;
     timerButton.innerHTML = 'Touch to Begin';
     timerHeaderSeconds.innerText = this.startingTime;
@@ -127,20 +127,20 @@ class Timer extends HTMLElement {
   }
 
   updateTimerUI() {
-    const timerRemainingTime = this.querySelector('.timer-bar_remaining-time');
-    const timerButton = this.querySelector('.timer-button_control');
-    const timerProgressBar = this.querySelector('.timer-bar_progress');
+    const timerRemainingTime = this.querySelector('.timer-bar__remaining-time');
+    const timerButton = this.querySelector('.timer-button__control');
+    const timerProgressBar = this.querySelector('.timer-bar__progress');
     timerRemainingTime.innerHTML = this.remainingTime;
     timerButton.innerHTML = this.message;
     timerProgressBar.setAttribute('width', `${this.progressPercent}%`);
     // Update timer class
     if (this.state === 'Active') {
-      timerButton.classList.add('timer_message--active');
-      timerButton.classList.remove('timer_message--paused');
+      timerButton.classList.add('timer__message--active');
+      timerButton.classList.remove('timer__message--paused');
     }
     if (this.state === 'Paused') {
-      timerButton.classList.remove('timer_message--active');
-      timerButton.classList.add('timer_message--paused');
+      timerButton.classList.remove('timer__message--active');
+      timerButton.classList.add('timer__message--paused');
     }
   }
 

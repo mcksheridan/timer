@@ -9,18 +9,18 @@
     fill: plum;
 }
 
-.timer-bar_progress {
+.timer-bar__progress {
     fill: #793698;
 }
 
-.timer_message {
+.timer__message {
     text-align: center;
     font-size: 1rem;
     font-family: sans-serif;
     fill: white;
 }
 
-.timer-bar_remaining-time {
+.timer-bar__remaining-time {
     fill: white;
     font-size: 1rem;
     font-family: sans-serif;
@@ -31,7 +31,7 @@
   text-align: center;
 }
 
-.timer-button_control {
+.timer-button__control {
   width: 30vw;
   min-width: 44px;
   min-height: 44px;
