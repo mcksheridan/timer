@@ -18,6 +18,21 @@ const template = `
       </footer>
 `;
 
+const exercises = [
+  {
+    name: 'Stretch 1',
+    img: 'http://',
+  },
+  {
+    name: 'Stretch 2',
+    img: 'https://',
+  },
+  {
+    name: 'Stretch 3',
+    img: 'http://',
+  },
+];
+
 class Timer extends HTMLElement {
   constructor() {
     super(); // Call the constructor of HTMLElement
@@ -31,6 +46,9 @@ class Timer extends HTMLElement {
     this.progressPercent = this.startingProgressPercent;
     this.decreasePerInterval = this.startingProgressPercent / this.startingTime;
     this.interval = undefined;
+    this.exercise = exercises;
+    this.currentExercise = 0;
+    this.routineLength = this.exercise.length - 1;
   }
 
   connectedCallback() {
