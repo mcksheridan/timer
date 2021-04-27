@@ -55,9 +55,13 @@ class Timer extends HTMLElement {
     const timerRemainingTime = this.querySelector('.timer-bar__remaining-time');
     const timerButton = this.querySelector('.timer-button__control');
     const timerHeaderSeconds = this.querySelector('.timer-header__seconds');
+    const timerHeaderCurrentExercise = this.querySelector('.timer-header__current-exercise');
+    const timerHeaderUpcomingExercise = this.querySelector('.timer-header__upcoming-exercise');
     timerRemainingTime.innerHTML = this.startingTime;
     timerButton.innerHTML = 'Touch to Begin';
     timerHeaderSeconds.innerText = this.startingTime;
+    timerHeaderCurrentExercise.textContent = this.exercise[0].name;
+    timerHeaderUpcomingExercise.textContent = this.exercise[1].name;
     timerButton.addEventListener('click', () => {
       if (this.state === 'Uninitialized') {
         this.beginTimer();
@@ -150,6 +154,8 @@ class Timer extends HTMLElement {
     const timerRemainingTime = this.querySelector('.timer-bar__remaining-time');
     const timerButton = this.querySelector('.timer-button__control');
     const timerProgressBar = this.querySelector('.timer-bar__progress');
+    const currentExercise = this.querySelector('.timer-header__current-exercise');
+    const upcomingExercise = this.querySelector('.timer-header__upcoming-exercise');
     timerRemainingTime.innerHTML = this.remainingTime;
     timerButton.innerHTML = this.message;
     timerProgressBar.setAttribute('width', `${this.progressPercent}%`);
@@ -161,6 +167,16 @@ class Timer extends HTMLElement {
     if (this.state === 'Paused') {
       timerButton.classList.remove('timer__message--active');
       timerButton.classList.add('timer__message--paused');
+    }
+    // Update current/upcoming exercise
+    if (this.currentExercise <= this.routineLength) {
+      currentExercise.textContent = this.exercise[this.currentExercise].name;
+    }
+    if (this.currentExercise < this.routineLength) {
+      upcomingExercise.textContent = this.exercise[this.currentExercise + 1].name;
+    }
+    if (this.currentExercise === this.routineLength) {
+      upcomingExercise.textContent = 'Good job!';
     }
   }
 
