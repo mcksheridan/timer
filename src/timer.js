@@ -113,6 +113,15 @@ class Timer extends HTMLElement {
     }
   }
 
+  updateCurrentExercise() {
+    if (this.currentExercise < this.routineLength) {
+      this.currentExercise += 1;
+      this.resetTime();
+      clearInterval(this.interval);
+      this.beginTimer();
+    }
+  }
+
   decrementTimeRemaining() {
     if (this.state === 'Paused') {
       return;
