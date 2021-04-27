@@ -106,8 +106,15 @@ class Timer extends HTMLElement {
     this.message = message;
   }
 
-  allowRestart() {
+  beginNextExercise() {
     if (this.remainingTime === 0) {
+      this.allowRestart();
+      this.updateCurrentExercise();
+    }
+  }
+
+  allowRestart() {
+    if (this.currentExercise === this.routineLength) {
       this.state = 'Finished';
       this.message = 'Restart';
     }
@@ -153,7 +160,7 @@ class Timer extends HTMLElement {
   }
 
   decrementTimer() {
-    this.allowRestart();
+    this.beginNextExercise();
     this.decrementTimeRemaining();
     this.decrementProgressBar();
     this.updateTimerUI();
